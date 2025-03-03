@@ -1,0 +1,24 @@
+<h2>Cids do user</h2>
+
+<table>
+  <thead>
+    <tr>
+      <td>Cat.</td>
+      <td>Descr</td>
+      <td>Hospital</td>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @current_user_user_cids_filtered = @user_cids.select{ |user_cid| user_cid.user_id == @user_id.to_i } %>
+
+    <% @current_user_user_cids_filtered.sort{|a, b| a.cid.id <=> b.cid.id }.each do |user_cid| %>
+      <tr>
+        <td><%= user_cid.cid.number %></td>
+        <td><%= user_cid.cid.description.truncate(50) %></td>
+        <td><%= user_cid.hospitals.first.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

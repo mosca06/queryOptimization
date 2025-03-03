@@ -1,0 +1,23 @@
+<h2>Cids do agrupadas por cid</h2>
+
+<table>
+  <thead>
+    <tr>
+      <td>Cat.</td>
+      <td>Descr</td>
+      <td>Qtd</td>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% cids_groups = @cids.group_by{ |cid | cid.cid_id } %>
+    <% cids_groups.sort{|a, b| Cid.find(a[0]).id <=> Cid.find(b[0]).id }.each do |cid_group| %>
+      <tr>
+        <td><%= Cid.find(cid_group[0]).number %></td>
+        <td><%= Cid.find(cid_group[0]).description.truncate(50) %></td>
+        <td><%= cid_group[1].size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
