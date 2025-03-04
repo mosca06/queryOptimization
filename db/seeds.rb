@@ -58,7 +58,7 @@ puts 'Hospitais criados'
 puts 'Atrelando Usuários e Cids'
   cid_qtd = Cid.count
   User.all.each do |user|
-    jump = [false, false, false, true].sample
+    jump = [ false, false, false, true ].sample
     next if jump
 
     id = Faker::Number.between(from: 1, to: cid_qtd)
@@ -96,4 +96,3 @@ puts 'Atrelando UsuáriosCids aos Hospitais'
     )
   end
 puts 'UsuáriosCids atrelados aos Hospitais'
-
